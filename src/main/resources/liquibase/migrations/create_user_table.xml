@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <property name="now" value="NOW()" dbms="mysql" />
+
+    <!-- Change set for creating `user` table -->
+    <changeSet id="create-users-table" author="hedza06">
+        <createTable tableName="user">
+            <column name="id" type="BIGINT(20)" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="full_name" type="VARCHAR(128)">
+                <constraints nullable="false" />
+            </column>
+            <column name="age" type="INT(11)">
+                <constraints nullable="false" />
+            </column>
+            <column name="address" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_at" type="TIMESTAMP" defaultValueDate="${now}">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
